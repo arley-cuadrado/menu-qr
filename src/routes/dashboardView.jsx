@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import DashboardWrapper from "../components/dashboardWrapper";
 import { v4 as uuidv4 } from 'uuid';
-import { getMenus, insertNewLink } from "../firebase/firebase"
+import { deleteMenu, getMenus, insertNewMenu, updateMenu } from "../firebase/firebase";
+import Menu from '../components/menu';
 
 export default function DashboardView() {
     const navigate = useNavigate();
@@ -36,18 +37,18 @@ export default function DashboardView() {
 
     function handleOnSubmit(e){
         e.preventDefault();
-        addLink();
+        addMenu();
     }
 
-    function addLink(){
-        if(title != '' && description != ''){
+    function addMenu(){
+        if(title !== '' && description !== ''){
             const newMenu = {
                 id: uuidv4(),
                 title: title,
                 description: description,
                 uid: currentUser.uid,
             };
-            const res = insertNewLink(newMenu);
+            const res = insertNewMenu(newMenu);
             newMenu.docId = res.id;
             setTitle('');
             setDescription('');
@@ -63,6 +64,21 @@ export default function DashboardView() {
         if(e.target.name === 'description'){
             setDescription(value)
         }
+    }
+
+    async function handleDeleteMenu(docId){
+        await deleteMenu(docId);
+        const tmp = menus.filter((menu) => menu.docId != docId);
+        setMenus([ ... tmp ]);
+    }
+
+    async function handleUpdateMenu(docId, title, description){
+        const menu = menus.find(item => item.docId === docId);
+        //console.log(menu, docId, title, description);
+        menu.title = title;
+        menu.description = description;
+        await updateMenu(docId, menu);
+        
     }
 
     return (
@@ -83,9 +99,17 @@ export default function DashboardView() {
                 <div>
                     {
                         menus.map((menu) => (
-                            <div key={menu.id}>
+                            <Menu
+                                key={menu.docId} 
+                                docId={menu.docId}
+                                description={menu.description} 
+                                title={menu.title} 
+                                onDelete={handleDeleteMenu} 
+                                onUpdate={handleUpdateMenu} 
+                            />
+                            /*<div key={menu.id}>
                                 {menu.title} - {menu.description}
-                            </div>
+                            </div>*/
                         ))
                     }
                 </div>

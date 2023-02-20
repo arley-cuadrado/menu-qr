@@ -50,7 +50,7 @@ export default function ChooseUsernameView() {
                 </div>
 
                 <div>
-                    <button onClick={handleContinue}>Continue</button>
+                    <button onClick={handleContinue}>Continuar</button>
                 </div>
             </div>
         )
@@ -58,7 +58,7 @@ export default function ChooseUsernameView() {
 
     if(state === 6){
         return (
-            <div><h1>Felicidades, ya puedes ir al dashboard a crear tus productos.</h1>
+            <div><h1>Felicidades, ya puedes ir al dashboard a crear tus menús.</h1>
                 <Link to="/dashboard">Continuar</Link>
             </div>
             )

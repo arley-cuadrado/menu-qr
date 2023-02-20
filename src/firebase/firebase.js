@@ -89,13 +89,13 @@ export async function getUserInfo(uid){
     }
 }
 
-export async function insertNewLink(menu){
+export async function insertNewMenu(menu){
     try {
         const docRef = collection(db, 'menus');
-        const res = await addDoc(docRef, menu)
+        const res = await addDoc(docRef, menu);
         return res;
     }catch(error){
-        console.error(error)
+        console.error(error);
     }
 }
 
@@ -116,5 +116,28 @@ export async function getMenus(uid){
 
     }catch (error){
         console.error(error);
+    }
+}
+
+export async function updateMenu(docId, menu){
+    try {
+        const docRef = doc(db, 'menus', docId);
+        const res = await setDoc(docRef, menu);
+        return res;
+    } catch(error){
+        console.error(error);
+    }
+}
+
+
+export async function deleteMenu(docId){
+    try{
+        const docRef = doc(db, 'menus', docId);
+        const res = await deleteDoc(docRef);
+        
+        return res;
+    
+    } catch (error) {
+        console.error(error)
     }
 }
