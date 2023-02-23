@@ -141,3 +141,33 @@ export async function deleteMenu(docId){
         console.error(error)
     }
 }
+
+export async function setUserProfilePhoto(uid, file){
+    try{
+        const imageRef = ref(storage, `images/${uid}`);
+        const resUpload = await uploadBytes(imageRef, file);
+        return resUpload;
+    } catch(error){
+        console.error(error)
+    }
+}
+
+export async function getProfilePhotoUrl(profilePicture){
+    try{
+        const imageRef = ref(storage, profilePicture);
+        const url = await getDownloadURL(imageRef);
+        return url;
+    }catch(error){
+        console.error(error);
+    }
+}
+
+export async function getUserPublicProfileInfo(uid){
+    const profileInfo = await getUserInfo(uid);
+    const menusInfo = await getMenus(uid);
+
+    return {
+        profileInfo: profileInfo,
+        menusInfo: menusInfo,
+    }
+}
