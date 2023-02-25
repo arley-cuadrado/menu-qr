@@ -2,6 +2,7 @@ import AuthProvider from "../components/authProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { existUsername, updateUser } from "../firebase/firebase";
+import style from './chooseUsername.module.css'
 
 export default function ChooseUsernameView() {
     const navigate = useNavigate();
@@ -41,16 +42,16 @@ export default function ChooseUsernameView() {
 
     if(state === 3 || state === 5){
         return (
-            <div>
-                <h1>Bienvenido {currentUser.displayName}</h1>
-                <p>Para terminar el proceso elige un nombre de usuario</p>
+            <div className={style.chooseUsernameContainer}>
+                <h1 className="marginBottom-5">Bienvenido {currentUser.displayName}</h1>
+                <p className="marginTop-0 gray">Para terminar el proceso escribe el nombre de tu negocio</p>
                 {state === 5 ? <p>El nombre de usuario ya existe, escoge otro.</p> : ''}
                 <div>
-                    <input type="text" onChange={handleInputUsername} />
+                    <input className="input" type="text" onChange={handleInputUsername} />
                 </div>
 
                 <div>
-                    <button onClick={handleContinue}>Continuar</button>
+                    <button className='btn' onClick={handleContinue}>Continuar</button>
                 </div>
             </div>
         )
@@ -58,7 +59,8 @@ export default function ChooseUsernameView() {
 
     if(state === 6){
         return (
-            <div><h1>Felicidades, ya puedes ir al dashboard a crear tus menús.</h1>
+            <div className={style.chooseUsernameContainer}>
+                <h1 className="marginBottom-5">Felicidades!</h1> <br/> <p className="marginTop-0 gray">Ya puedes ir al dashboard y crear tus menús.</p>
                 <Link to="/dashboard">Continuar</Link>
             </div>
             )

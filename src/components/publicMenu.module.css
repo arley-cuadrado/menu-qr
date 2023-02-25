@@ -1,0 +1,19 @@
+.publicMenusContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.publicMenuContainer {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 20px;
+    background-color: rgb(49, 90, 223);
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.publicMenuContainer:hover {
+    background-color: rgb(49, 90, 223);
+}

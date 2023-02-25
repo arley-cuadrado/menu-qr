@@ -6,6 +6,8 @@ import AuthProvider from "../components/authProvider";
 /*import { useEffect } from "react";
 import { async } from "@firebase/util";*/
 
+import style from './loginView.module.css';
+
 export default function LoginView() {
     const navigate = useNavigate();
     //const [currentUser, setCurrentUser] = useState(null)
@@ -58,7 +60,12 @@ export default function LoginView() {
         if ( state === 4 ) {
             return (
                 <>
-                    <button onClick={ handleOnClick }>Careverga, Sign in with Google here!</button>
+                    <div className={style.loginView}>
+                        <div>
+                            <h1>Gimme!</h1>
+                        </div>
+                        <button className={style.provider} onClick={ handleOnClick }>Careverga, Sign in with Google here!</button>
+                    </div>
                 </>
             ) 
         }

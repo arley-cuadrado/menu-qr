@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState, useRef } from "react";
+import style from './menu.module.css'
 
 export default function Menu({ docId, title, description, onDelete, onUpdate }){
 
@@ -54,9 +55,9 @@ export default function Menu({ docId, title, description, onDelete, onUpdate }){
     }
 
     return (
-        <div key={docId}>
-            <div>
-                <div>
+        <div className={style.menu}> {/* key={docId} */}
+            <div className={style.menuInfo}>
+                <div className={style.menuTitle}>
                     {   editTitle 
                         ? 
                         <>
@@ -69,12 +70,14 @@ export default function Menu({ docId, title, description, onDelete, onUpdate }){
                         </> 
                         : 
                         <>
-                            <button onClick={handleEditTitle}>Edit</button> 
+                            <button className={style.btnEdit} onClick={handleEditTitle}>
+                                <span className="material-icons">edit</span>
+                            </button> 
                             {currentTitle}
                         </>
                     } 
                 </div>
-                <div> 
+                <div className={style.menuDescription}> 
                     {
                         editDescription
                         ? 
@@ -88,15 +91,19 @@ export default function Menu({ docId, title, description, onDelete, onUpdate }){
                         </>
                         :
                         <>
-                            <button onClick={handleEditDescription}>Edit</button> 
+                            <button className={style.btnEdit} onClick={handleEditDescription}>
+                                <span className="material-icons">edit</span>
+                            </button> 
                             {currentDescription}
                         </>
                     }
                 </div>
             </div>
 
-            <div>
-                <button onClick={handleDelete}>Eliminar</button>
+            <div className={style.menuActions}>
+                <button className={style.btnDelete} onClick={handleDelete}>
+                    <span className="material-icons">delete</span>
+                </button>
             </div>
         </div>
     )

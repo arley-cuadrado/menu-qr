@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { existUsername, getProfilePhotoUrl, getUserPublicProfileInfo } from "../firebase/firebase";
 import PublicMenu from "../components/publicMenu";
+import style from './publicProfileView.module.css';
+import styleMenus from '../components/publicMenu.module.css';
 
 export default function PublicProfileView() {
     const params = useParams();
@@ -46,17 +48,17 @@ export default function PublicProfileView() {
     }
 
     return (
-        <div>
-            <div>
+        <div className={style.profileContainer}>
+            <div className={style.profilePicture}>
                 <img src={url} alt="user photo" />
             </div>
             <h2>{profile?.profileInfo.username}</h2>
             <h3>{profile?.profileInfo.displayName}</h3>
-            <div>
-                
+
+            <div className={styleMenus.publicMenusContainer}>
                 {profile?.menusInfo.map((menu) => (
                     <>
-                    {menu.docId}
+                    {/* menu.docId */}
                         <PublicMenu 
                             docId={menu.docId} 
                             description={menu.description} 

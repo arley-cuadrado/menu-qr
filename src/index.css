@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f6f8;
 }
 
 code {
@@ -46,18 +47,39 @@ code {
   font-weight: bold;
   font-size: 18px;
   border: none;
-  background-color: rgb(13, 110, 184);
+  background-color: rgb(49, 90, 223);
   color: white;
-  padding: 15px 15px;
+  padding: 10px 20px;
   border-radius: 3px;
+  margin: 10px 0;
+  /**/
+  min-width: 206px;
 }
 
-.main-container input[type="text"] {
+input[type="text"].input {
   border: solid 1px #ccc;
   border-radius: 3px;
   padding: 8px 10px;
 }
 
-.main-container label {
+label {
   padding-top: 5px;
+}
+
+a {
+  color: rgb(49, 90, 223);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.marginBottom-5 {
+  margin-bottom: 5px;
+}
+
+.marginTop-0 {
+  margin-top: 0px;
+}
+
+.gray {
+  color: #919191;
 }

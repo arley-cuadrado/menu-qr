@@ -5,6 +5,8 @@ import DashboardWrapper from "../components/dashboardWrapper";
 import { v4 as uuidv4 } from 'uuid';
 import { deleteMenu, getMenus, insertNewMenu, updateMenu } from "../firebase/firebase";
 import Menu from '../components/menu';
+import style from './dashboardView.module.css';
+import styleMenus from '../components/menu.module.css';
 
 export default function DashboardView() {
     const navigate = useNavigate();
@@ -86,17 +88,35 @@ export default function DashboardView() {
             <div>
                 <h1>Dashboard</h1>
 
-                <form action="" onSubmit={handleOnSubmit}>
+                <form 
+                    className={style.entryContainer} 
+                    action="" 
+                    onSubmit={handleOnSubmit}
+                >
                     <label htmlFor="title">Título</label>
-                    <input type="text" name="title" onChange={handleOnChange} />
+                    <input 
+                        className="input" 
+                        type="text" 
+                        name="title" 
+                        onChange={handleOnChange} 
+                    />
 
                     <label htmlFor="title">Descripción</label>
-                    <input type="text" name="description"  onChange={handleOnChange} />
+                    <input 
+                        className="input" 
+                        type="text" 
+                        name="description"  
+                        onChange={handleOnChange} 
+                    />
 
-                    <input type="submit" value="Crear nuevo menú" />
+                    <input
+                        className="btn" 
+                        type="submit" 
+                        value="Crear nuevo menú" 
+                    />
                 </form>
 
-                <div>
+                <div className={styleMenus.menusContainer}>
                     {
                         menus.map((menu) => (
                             <Menu
