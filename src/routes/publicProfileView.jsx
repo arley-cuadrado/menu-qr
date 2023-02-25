@@ -8,6 +8,7 @@ export default function PublicProfileView() {
     const [ profile, setProfile ] = useState(null);
     const [ url, setUrl ] = useState('');
     const [ state, setState ] = useState('');
+    const [ nameId, setNameId ] = useState(null);
 
     
     useEffect(() => {
@@ -29,7 +30,8 @@ export default function PublicProfileView() {
             }
         }catch(error){
 
-        }        
+        }     
+        profileName(username);   
     }
     }, [params]);
 
@@ -39,17 +41,29 @@ export default function PublicProfileView() {
         </div>
     }
 
+    function profileName(username){
+        setNameId(username)
+    }
+
     return (
         <div>
             <div>
-                <img src={url} alt="" />
+                <img src={url} alt="user photo" />
             </div>
             <h2>{profile?.profileInfo.username}</h2>
             <h3>{profile?.profileInfo.displayName}</h3>
             <div>
                 
                 {profile?.menusInfo.map((menu) => (
-                    <PublicMenu key={menu.docId} description={menu.description} title={menu.title}></PublicMenu>
+                    <>
+                    {menu.docId}
+                        <PublicMenu 
+                            docId={menu.docId} 
+                            description={menu.description} 
+                            title={menu.title} 
+                            nameId={nameId}
+                        />
+                    </>
                 ))}
             </div>
         </div>

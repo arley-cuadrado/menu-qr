@@ -1,8 +1,14 @@
-export default function PublicMenu({description, title}){
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+export default function PublicMenu({docId, description, title, nameId}){
+
     return(
         <div>
-            <strong>{title}</strong>
-            <p>{description}</p>
+            <Link to={`/u/${nameId}/${docId}`}>
+                <strong>{title}</strong>
+                <p>{description}</p>
+            </Link>
         </div>
     )
 }

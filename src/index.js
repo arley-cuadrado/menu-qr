@@ -11,6 +11,7 @@ import EditProfileView from './routes/editProfileView';
 import SignOutView from './routes/signOutView';
 import PublicProfileView from './routes/publicProfileView';
 import ChooseUsernameView from './routes/chooseUsernameView';
+import PublicMenuRequest from './components/publicMenuRequest';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +23,7 @@ root.render(
       <Route path='dashboard/profile' element={<EditProfileView />}></Route>
       <Route path='signout' element={<SignOutView />}></Route>
       <Route path='u/:username' element={<PublicProfileView />}></Route>
+      <Route path='u/:username/:menu' element={<PublicMenuRequest />}></Route>
       <Route path='choose-username' element={<ChooseUsernameView />}></Route>
     </Routes>
   </BrowserRouter>
