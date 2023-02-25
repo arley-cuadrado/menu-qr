@@ -171,3 +171,7 @@ export async function getUserPublicProfileInfo(uid){
         menusInfo: menusInfo,
     }
 }
+
+export async function logout() {
+    await auth.signOut();
+}
